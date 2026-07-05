@@ -10,7 +10,7 @@ const portfolio = {
 			description:
 				'Сообщество для тех, кто развивается в криптовалютах, трейдинге и Web3. Новости рынка, аналитика, образовательные материалы и совместное развитие.',
 			tags: ['Crypto', 'Trading', 'Web3'],
-			link: '#',
+			link: 'https://t.me/Waikser',
 		},
 		{
 			icon: 'flame',
@@ -18,7 +18,7 @@ const portfolio = {
 			description:
 				'Практический марафон для новичков и опытных участников. Пошаговое обучение, сопровождение и первые результаты в криптоиндустрии.',
 			tags: ['Education', 'Community', 'Mentoring'],
-			link: '#',
+			link: 'https://t.me/Waikser',
 		},
 	],
 
@@ -37,7 +37,7 @@ const portfolio = {
 			title: 'WaikVPN',
 			description:
 				'Надежный VPN для безопасной работы с криптовалютой, биржами и Web3 без ограничений.',
-			status: 'Доступно',
+			status: 'Скоро',
 			link: '#',
 		},
 
@@ -47,7 +47,7 @@ const portfolio = {
 			description:
 				'Закрытое сообщество с ежедневной аналитикой рынка, торговыми идеями, обучением и живым общением.',
 			status: 'Открыто',
-			link: '#',
+			link: 'https://t.me/Waikser',
 		},
 
 		{
