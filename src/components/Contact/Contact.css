@@ -1,0 +1,129 @@
+.contact {
+	padding: 120px 40px;
+}
+
+.contactCard {
+	max-width: 900px;
+
+	margin: auto;
+
+	padding: 60px;
+
+	text-align: center;
+
+	border-radius: 30px;
+
+	background: rgba(255, 255, 255, 0.05);
+
+	backdrop-filter: blur(18px);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contactBadge {
+	display: inline-block;
+
+	margin-bottom: 25px;
+
+	padding: 10px 18px;
+
+	border-radius: 999px;
+
+	background: rgba(123, 63, 228, 0.12);
+
+	border: 1px solid rgba(123, 63, 228, 0.22);
+
+	color: #bdb8ff;
+
+	font-size: 14px;
+
+	font-weight: 600;
+}
+
+.contactCard h2 {
+	font-size: 52px;
+
+	margin-bottom: 25px;
+}
+
+.contactCard p {
+	max-width: 650px;
+
+	margin: 0 auto 45px;
+
+	color: #aeb3c2;
+
+	line-height: 1.8;
+
+	font-size: 18px;
+}
+
+.contactButtons {
+	display: flex;
+
+	justify-content: center;
+
+	gap: 20px;
+
+	flex-wrap: wrap;
+}
+
+.contactButtons a {
+	text-decoration: none;
+
+	padding: 16px 38px;
+
+	border-radius: 999px;
+
+	font-weight: 700;
+
+	transition: 0.35s;
+}
+
+.contactPrimary {
+	background: linear-gradient(90deg, #7b3fe4, #3563ff);
+
+	color: white;
+}
+
+.contactPrimary:hover {
+	transform: translateY(-4px);
+
+	box-shadow: 0 20px 45px rgba(123, 63, 228, 0.35);
+}
+
+.contactSecondary {
+	background: rgba(255, 255, 255, 0.05);
+
+	border: 1px solid rgba(255, 255, 255, 0.12);
+
+	color: white;
+}
+
+.contactSecondary:hover {
+	transform: translateY(-4px);
+
+	background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+	.contact {
+		padding: 100px 25px;
+	}
+
+	.contactCard {
+		padding: 40px 25px;
+	}
+
+	.contactCard h2 {
+		font-size: 38px;
+	}
+
+	.contactButtons {
+		flex-direction: column;
+	}
+
+	.contactButtons a {
+		width: 100%;
+	}
+}

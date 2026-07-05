@@ -1,0 +1,384 @@
+.services {
+	padding: 140px 40px;
+	position: relative;
+}
+
+.services h2 {
+	text-align: center;
+	font-size: clamp(44px, 5vw, 64px);
+	font-weight: 900;
+	letter-spacing: -2px;
+	margin-bottom: 80px;
+}
+
+.servicesGrid {
+	max-width: 1300px;
+	margin: 0 auto;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 32px;
+}
+
+.serviceCard {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+
+	min-height: 440px;
+
+	padding: 36px;
+
+	border-radius: 30px;
+
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.045),
+		rgba(255, 255, 255, 0.03)
+	);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	backdrop-filter: blur(18px);
+
+	overflow: hidden;
+
+	transition: transform 0.45s ease, border-color 0.45s ease,
+		box-shadow 0.45s ease;
+}
+
+.serviceCard::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+
+	background: linear-gradient(
+		135deg,
+		rgba(123, 63, 228, 0.08),
+		transparent 45%
+	);
+
+	opacity: 0;
+	transition: 0.45s;
+}
+
+.serviceCard:hover {
+	transform: translateY(-10px);
+
+	border-color: #7b3fe4;
+
+	box-shadow: 0 25px 70px rgba(123, 63, 228, 0.18);
+}
+
+.serviceCard:hover::before {
+	opacity: 1;
+}
+
+/* BITUNIX */
+
+.featured {
+	border: 1px solid rgba(255, 190, 0, 0.42);
+
+	background: linear-gradient(
+		180deg,
+		rgba(255, 196, 0, 0.05),
+		rgba(255, 255, 255, 0.03)
+	);
+
+	box-shadow: 0 0 70px rgba(255, 190, 0, 0.1);
+}
+
+.featured:hover {
+	border-color: #ffcf4d;
+
+	box-shadow: 0 30px 90px rgba(255, 190, 0, 0.22);
+}
+
+.featured::after {
+	content: '';
+
+	position: absolute;
+
+	inset: 0;
+
+	background: radial-gradient(
+		circle at top right,
+		rgba(255, 215, 0, 0.12),
+		transparent 45%
+	);
+
+	pointer-events: none;
+}
+
+.serviceTop {
+	display: flex;
+
+	align-items: center;
+
+	justify-content: space-between;
+
+	margin-bottom: 28px;
+}
+
+.serviceIcon {
+	width: 74px;
+	height: 74px;
+
+	border-radius: 22px;
+
+	background: rgba(255, 255, 255, 0.05);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	transition: 0.35s;
+}
+
+.serviceIcon svg {
+	width: 34px;
+	height: 34px;
+
+	stroke-width: 2.3;
+}
+
+.serviceCard:nth-child(2) .serviceIcon {
+	color: #38bdf8;
+}
+
+.serviceCard:nth-child(3) .serviceIcon {
+	color: #22c55e;
+}
+
+.serviceCard:nth-child(4) .serviceIcon {
+	color: #8b5cf6;
+}
+
+.serviceCard:nth-child(5) .serviceIcon {
+	color: #ef4444;
+}
+
+.serviceCard:hover .serviceIcon {
+	transform: scale(1.08) rotate(-8deg);
+
+	background: rgba(123, 63, 228, 0.12);
+
+	border-color: #7b3fe4;
+}
+
+.serviceIcon img {
+	width: 56px;
+	height: 56px;
+
+	object-fit: contain;
+
+	filter: drop-shadow(0 8px 18px rgba(255, 196, 0, 0.28));
+
+	transition: 0.35s;
+}
+
+.featured:hover .serviceIcon img {
+	transform: scale(1.08);
+}
+
+.partnerBadge {
+	display: flex;
+
+	align-items: center;
+
+	gap: 6px;
+
+	padding: 8px 16px;
+
+	border-radius: 999px;
+
+	background: linear-gradient(135deg, #f59e0b, #ffd54f);
+
+	color: #111;
+
+	font-size: 12px;
+
+	font-weight: 800;
+
+	letter-spacing: 0.5px;
+
+	box-shadow: 0 10px 25px rgba(245, 158, 11, 0.25);
+}
+
+.serviceCard h3 {
+	font-size: 30px;
+
+	font-weight: 800;
+
+	margin-bottom: 18px;
+}
+
+.serviceCard p {
+	color: #aeb3c2;
+
+	line-height: 1.8;
+
+	margin-bottom: 20px;
+
+	flex: 1;
+}
+
+.bitunixBenefits {
+	list-style: none;
+
+	padding: 0;
+
+	margin: 0 0 28px;
+
+	display: flex;
+
+	flex-direction: column;
+
+	gap: 14px;
+}
+
+.bitunixBenefits li {
+	display: flex;
+
+	align-items: center;
+
+	gap: 12px;
+
+	font-size: 15px;
+
+	color: #d6dbeb;
+}
+
+.bitunixBenefits li svg {
+	width: 18px;
+	height: 18px;
+
+	color: #fbbf24;
+
+	flex-shrink: 0;
+}
+
+.serviceCard a {
+	margin-top: auto;
+
+	text-decoration: none;
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	padding: 15px 22px;
+
+	border-radius: 14px;
+
+	background: rgba(255, 255, 255, 0.05);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	color: white;
+
+	font-weight: 700;
+
+	transition: 0.35s;
+}
+
+.serviceCard a:hover {
+	transform: translateY(-4px);
+
+	background: rgba(255, 255, 255, 0.08);
+}
+
+.bitunixButton {
+	background: linear-gradient(135deg, #ffb000, #ffd85b) !important;
+
+	color: #111 !important;
+
+	border: none !important;
+
+	position: relative;
+
+	overflow: hidden;
+}
+
+.bitunixButton::before {
+	content: '';
+
+	position: absolute;
+
+	inset: 0;
+
+	background: linear-gradient(
+		110deg,
+		transparent 20%,
+		rgba(255, 255, 255, 0.45) 50%,
+		transparent 80%
+	);
+
+	transform: translateX(-130%);
+
+	transition: 1s;
+}
+
+.bitunixButton:hover::before {
+	transform: translateX(130%);
+}
+
+.bitunixButton:hover {
+	box-shadow: 0 20px 45px rgba(255, 196, 0, 0.35);
+
+	color: #111 !important;
+}
+
+.status {
+	padding: 8px 15px;
+
+	border-radius: 999px;
+
+	font-size: 12px;
+
+	font-weight: 700;
+
+	color: white;
+}
+
+.status.Доступно {
+	background: #22c55e;
+}
+
+.status.Открыто {
+	background: #2563eb;
+}
+
+.status.Скоро {
+	background: #7c3aed;
+}
+
+@media (max-width: 900px) {
+	.services {
+		padding: 100px 24px;
+	}
+
+	.servicesGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.serviceCard {
+		min-height: auto;
+		padding: 30px;
+	}
+
+	.serviceCard h3 {
+		font-size: 28px;
+	}
+
+	.services h2 {
+		font-size: 44px;
+	}
+}

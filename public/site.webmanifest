@@ -1,0 +1,15 @@
+{
+	"name": "WAIK",
+	"short_name": "WAIK",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#090B16",
+	"theme_color": "#090B16",
+	"icons": [
+		{
+			"src": "/favicon.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

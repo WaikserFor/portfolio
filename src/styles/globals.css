@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: #070b14;
+
+	color: white;
+
+	font-family: 'Sora', sans-serif;
+
+	overflow-x: hidden;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+img {
+	display: block;
+
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+
+	color: inherit;
+}
+
+main {
+	width: min(1280px, 92%);
+
+	margin: auto;
+}
+
+section {
+	scroll-margin-top: 100px;
+
+	padding: 120px 0;
+}
+
+.background {
+	position: fixed;
+
+	inset: 0;
+
+	z-index: -100;
+
+	background: radial-gradient(circle at top right, #7c3aed22, transparent 30%),
+		radial-gradient(circle at bottom left, #2563eb22, transparent 40%), #070b14;
+}
+body::before {
+	content: '';
+
+	position: fixed;
+
+	inset: 0;
+
+	background-image: linear-gradient(
+			rgba(255, 255, 255, 0.02) 1px,
+			transparent 1px
+		),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+
+	background-size: 70px 70px;
+
+	pointer-events: none;
+
+	z-index: -10;
+}
+button,
+a {
+	transition: 0.35s;
+}
+
+a:hover {
+	opacity: 0.95;
+}
+a {
+	transition: 0.35s;
+}
+
+a:hover {
+	opacity: 0.9;
+}
+h1,
+h2,
+h3,
+.logo {
+	font-family: 'Sora', sans-serif;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+p,
+li,
+a,
+button {
+	font-family: 'Sora', sans-serif;
+	font-weight: 400;
+}

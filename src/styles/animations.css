@@ -1,0 +1,57 @@
+.glass {
+	background: rgba(255, 255, 255, 0.05);
+
+	backdrop-filter: blur(24px);
+
+	-webkit-backdrop-filter: blur(24px);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35),
+		inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+	border-radius: 30px;
+
+	transition: 0.45s;
+
+	overflow: hidden;
+
+	position: relative;
+}
+
+.glass::before {
+	content: '';
+
+	position: absolute;
+
+	left: -40%;
+
+	top: 0;
+
+	width: 50%;
+
+	height: 100%;
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.08),
+		transparent
+	);
+
+	transform: skewX(-20deg);
+
+	transition: 1s;
+}
+
+.glass:hover::before {
+	left: 130%;
+}
+
+.glass:hover {
+	transform: translateY(-12px);
+
+	border-color: #7c3aed;
+
+	box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 45px rgba(124, 58, 237, 0.18);
+}

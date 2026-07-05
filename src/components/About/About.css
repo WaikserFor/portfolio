@@ -1,0 +1,235 @@
+.about {
+	padding: 140px 40px;
+	position: relative;
+}
+
+.about h2 {
+	text-align: center;
+	font-size: clamp(44px, 5vw, 64px);
+	font-weight: 900;
+	letter-spacing: -2px;
+	margin-bottom: 80px;
+}
+
+.aboutGrid {
+	max-width: 1300px;
+	margin: 0 auto;
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 32px;
+}
+
+.aboutCard {
+	position: relative;
+
+	padding: 42px;
+
+	border-radius: 30px;
+
+	background: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.045),
+		rgba(255, 255, 255, 0.03)
+	);
+
+	border: 1px solid rgba(255, 255, 255, 0.07);
+
+	backdrop-filter: blur(18px);
+
+	overflow: hidden;
+
+	transition: transform 0.45s ease, border-color 0.45s ease,
+		box-shadow 0.45s ease;
+}
+
+.aboutCard::before {
+	content: '';
+
+	position: absolute;
+	inset: 0;
+
+	background: linear-gradient(
+		135deg,
+		rgba(123, 63, 228, 0.08),
+		transparent 45%,
+		transparent
+	);
+
+	opacity: 0;
+
+	transition: 0.45s;
+}
+
+.aboutCard:hover {
+	transform: translateY(-8px);
+
+	border-color: #7b3fe4;
+
+	box-shadow: 0 25px 70px rgba(123, 63, 228, 0.16);
+}
+
+.aboutCard:hover::before {
+	opacity: 1;
+}
+
+.aboutCard h3 {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+
+	margin-bottom: 28px;
+
+	font-size: 32px;
+	font-weight: 800;
+}
+
+.aboutCard h3 svg {
+	color: #8b5cf6;
+
+	flex-shrink: 0;
+}
+
+.aboutCard p {
+	font-size: 18px;
+
+	line-height: 1.9;
+
+	color: #aeb3c2;
+
+	margin-bottom: 18px;
+}
+
+.aboutCard strong {
+	color: white;
+	font-weight: 700;
+}
+
+.aboutCard ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.aboutCard li {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+
+	padding: 14px 0;
+
+	color: #d8dceb;
+
+	font-size: 18px;
+
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+	transition: 0.3s;
+}
+
+.aboutCard li:last-child {
+	border-bottom: none;
+}
+
+.aboutCard li svg {
+	color: #8b5cf6;
+
+	width: 18px;
+	height: 18px;
+
+	flex-shrink: 0;
+}
+
+.aboutCard li:hover {
+	padding-left: 8px;
+
+	color: white;
+}
+
+.aboutWide {
+	grid-column: 1/-1;
+
+	text-align: center;
+}
+
+.aboutWide h3 {
+	justify-content: center;
+}
+
+.aboutTags {
+	margin-top: 34px;
+
+	display: flex;
+
+	flex-wrap: wrap;
+
+	justify-content: center;
+
+	gap: 18px;
+}
+
+.aboutTags span {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+
+	padding: 15px 24px;
+
+	border-radius: 999px;
+
+	background: rgba(123, 63, 228, 0.12);
+
+	border: 1px solid rgba(123, 63, 228, 0.25);
+
+	font-weight: 600;
+
+	transition: 0.35s;
+}
+
+.aboutTags span svg {
+	color: #8b5cf6;
+
+	transition: 0.35s;
+}
+
+.aboutTags span:hover {
+	transform: translateY(-5px);
+
+	background: #7b3fe4;
+
+	border-color: #7b3fe4;
+
+	color: white;
+
+	box-shadow: 0 10px 35px rgba(123, 63, 228, 0.35);
+}
+
+.aboutTags span:hover svg {
+	color: white;
+}
+
+@media (max-width: 900px) {
+	.about {
+		padding: 100px 24px;
+	}
+
+	.aboutGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.aboutWide {
+		grid-column: auto;
+	}
+
+	.aboutCard {
+		padding: 30px;
+	}
+
+	.aboutCard h3 {
+		font-size: 28px;
+	}
+
+	.about h2 {
+		font-size: 44px;
+	}
+}

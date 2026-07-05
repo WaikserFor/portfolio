@@ -1,0 +1,166 @@
+.projects {
+	padding: 120px 40px;
+}
+
+.projects h2 {
+	text-align: center;
+	font-size: clamp(42px, 5vw, 60px);
+	margin-bottom: 70px;
+}
+
+.projectsGrid {
+	max-width: 1300px;
+	margin: auto;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+
+	gap: 30px;
+}
+
+.projectCard {
+	display: flex;
+	flex-direction: column;
+
+	min-height: 380px;
+
+	background: rgba(255, 255, 255, 0.05);
+
+	backdrop-filter: blur(18px);
+
+	border: 1px solid rgba(255, 255, 255, 0.08);
+
+	border-radius: 28px;
+
+	padding: 35px;
+
+	transition: 0.35s;
+}
+
+.projectCard:hover {
+	transform: translateY(-10px);
+
+	border-color: #7b3fe4;
+
+	box-shadow: 0 20px 60px rgba(123, 63, 228, 0.2);
+}
+
+.projectTop {
+	display: flex;
+
+	justify-content: space-between;
+
+	align-items: center;
+
+	margin-bottom: 25px;
+}
+
+.projectIcon {
+	width: 72px;
+	height: 72px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 22px;
+
+	background: rgba(123, 63, 228, 0.1);
+
+	border: 1px solid rgba(123, 63, 228, 0.18);
+
+	color: #8b5cf6;
+
+	margin-bottom: 22px;
+
+	transition: 0.4s;
+}
+
+.projectCard:hover .projectIcon {
+	background: #7b3fe4;
+
+	color: white;
+
+	transform: translateY(-4px) rotate(-6deg);
+
+	box-shadow: 0 15px 35px rgba(123, 63, 228, 0.35);
+}
+
+.projectIcon svg {
+	width: 34px;
+	height: 34px;
+
+	stroke-width: 2.3;
+}
+
+.projectStatus {
+	background: #6c63ff;
+
+	color: white;
+
+	padding: 8px 16px;
+
+	border-radius: 30px;
+
+	font-size: 13px;
+
+	font-weight: 700;
+}
+
+.projectCard h3 {
+	font-size: 30px;
+
+	margin-bottom: 18px;
+}
+
+.projectCard p {
+	color: #aeb3c2;
+
+	line-height: 1.8;
+
+	flex: 1;
+}
+
+.projectTags {
+	display: flex;
+
+	flex-wrap: wrap;
+
+	gap: 12px;
+
+	margin: 25px 0;
+}
+
+.projectTags span {
+	padding: 8px 16px;
+
+	border-radius: 999px;
+
+	background: rgba(123, 63, 228, 0.12);
+
+	border: 1px solid rgba(123, 63, 228, 0.25);
+
+	font-size: 14px;
+}
+
+.projectLink {
+	margin-top: auto;
+
+	color: white;
+
+	text-decoration: none;
+
+	font-weight: 700;
+
+	transition: 0.3s;
+}
+
+.projectLink:hover {
+	color: #8d5cff;
+}
+
+@media (max-width: 900px) {
+	.projects {
+		padding: 100px 25px;
+	}
+}
