@@ -67,7 +67,7 @@ export default function Navbar() {
 					</a>
 
 					<a
-						href='https://instagram.com/kirillwaikbydfi'
+						href='https://instagram.com/kirillWaik'
 						target='_blank'
 						rel='noreferrer'
 						className='instagramBtn'
