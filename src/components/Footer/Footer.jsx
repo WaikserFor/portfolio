@@ -18,7 +18,7 @@ export default function Footer() {
 					</a>
 
 					<a
-						href='https://instagram.com/kirillwaikbydfi'
+						href='https://instagram.com/kirillWaik'
 						target='_blank'
 						rel='noreferrer'
 					>
