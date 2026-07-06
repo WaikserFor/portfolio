@@ -127,3 +127,38 @@
 		width: 100%;
 	}
 }
+/* ==========================================
+   MOBILE CONTACT
+========================================== */
+
+@media (max-width: 768px) {
+	.contact {
+		padding: 80px 20px;
+	}
+
+	.contactHeader h2 {
+		font-size: 36px;
+	}
+
+	.contactHeader p {
+		font-size: 17px;
+	}
+
+	.contactButtons {
+		display: flex;
+
+		flex-direction: column;
+
+		gap: 16px;
+	}
+
+	.contactButtons a {
+		width: 100%;
+
+		height: 56px;
+
+		justify-content: center;
+
+		font-size: 17px;
+	}
+}
