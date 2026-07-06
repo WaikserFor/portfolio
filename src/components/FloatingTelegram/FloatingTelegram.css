@@ -1,0 +1,73 @@
+.floatingTelegram {
+	position: fixed;
+
+	right: 26px;
+
+	bottom: 26px;
+
+	width: 64px;
+
+	height: 64px;
+
+	border-radius: 50%;
+
+	background: linear-gradient(135deg, #31a8ff, #0088cc);
+
+	display: flex;
+
+	align-items: center;
+
+	justify-content: center;
+
+	font-size: 30px;
+
+	color: white;
+
+	text-decoration: none;
+
+	box-shadow: 0 10px 35px rgba(0, 136, 204, 0.45),
+		0 0 30px rgba(49, 168, 255, 0.35);
+
+	transform: translateY(30px) scale(0.85);
+
+	opacity: 0;
+
+	pointer-events: none;
+
+	transition: 0.35s;
+
+	z-index: 5000;
+}
+
+.floatingTelegram:hover {
+	transform: translateY(0) scale(1.08);
+
+	box-shadow: 0 18px 45px rgba(0, 136, 204, 0.55),
+		0 0 45px rgba(49, 168, 255, 0.45);
+}
+
+.floatingTelegram.show {
+	transform: translateY(0);
+
+	opacity: 1;
+
+	pointer-events: auto;
+}
+
+.floatingTelegram svg {
+	transform: translateX(-2px);
+}
+
+@media (max-width: 768px) {
+	.floatingTelegram {
+		width: 58px;
+
+		height: 58px;
+
+		right: 18px;
+
+		bottom: 18px;
+
+		font-size: 28px;
+	}
+}

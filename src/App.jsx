@@ -5,6 +5,7 @@ import Projects from './components/Projects/Projects'
 import Services from './components/Services/Services'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+import FloatingTelegram from './components/FloatingTelegram/FloatingTelegram'
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			<Services />
 			<Contact />
 			<Footer />
+			<FloatingTelegram />
 		</>
 	)
 }
