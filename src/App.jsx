@@ -66,21 +66,28 @@ function Header({ t, lang, setLang }) {
   }, [])
 
   useEffect(() => {
-    const updateActive = () => {
+    let frame = 0
+    const checkActive = () => {
+      frame = 0
       const offset = window.scrollY + Math.min(260, window.innerHeight * 0.32)
       let next = ''
-
       for (const id of sections) {
         const el = document.getElementById(id)
         if (el && el.offsetTop <= offset) next = id
       }
-
-      setActive(next)
+      setActive(current => current === next ? current : next)
     }
-
-    updateActive()
-    window.addEventListener('scroll', updateActive, { passive: true })
-    return () => window.removeEventListener('scroll', updateActive)
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(checkActive)
+    }
+    schedule()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      cancelAnimationFrame(frame)
+    }
   }, [])
 
   return (
@@ -224,7 +231,7 @@ function Hero({ t }) {
         <div className='portrait-frame'>
           <div className='portrait-aura' />
           <div className='portrait-arch'>
-            <img src={portrait} alt='Kirill WAIK' />
+            <img src={portrait} alt='Kirill WAIK' decoding='async' />
           </div>
           <div className='portrait-footer'>
             <div>
@@ -454,7 +461,7 @@ function PartnerCard({ type, t }) {
       <div className='partner-top'>
         <div className={`partner-identity ${type}`}>
           {isBitunix ? (
-            <img src={bitunixLogo} alt='Bitunix logo' />
+            <img src={bitunixLogo} alt='Bitunix logo' loading='lazy' decoding='async' />
           ) : (
             <div className='pu-monogram'>
               PU
@@ -762,7 +769,7 @@ export default function App() {
   useLayoutEffect(() => {
     // Single reveal observer. Paint a hidden frame BEFORE activating visible
     // items, or the browser may coalesce the state changes and show no motion.
-    document.documentElement.dataset.waikVersion = '17'
+    document.documentElement.dataset.waikVersion = '19'
     const items = [...document.querySelectorAll(
       '.hero-copy,.portrait-frame,.section-heading,.about-primary,.about-focus,.about-now,.community-stage,.community-entry,.community-footnote,.partner-card,.product-card,.contact-box,.subhead,.footer-inner'
     )]
@@ -814,34 +821,52 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    const panels = document.querySelectorAll('.premium-panel')
-    const moveHandlers = [...panels].map(panel => {
+    // On touch devices no pointer tracking or frame-by-frame progress writes.
+    // This avoids forcing style recalculation while the user scrolls.
+    const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    if (!precisePointer) return
+
+    const panels = [...document.querySelectorAll('.premium-panel')]
+    const moveHandlers = panels.map(panel => {
+      let pending = 0
+      let x = 50
+      let y = 35
       const handleMove = event => {
         const bounds = panel.getBoundingClientRect()
-        panel.style.setProperty('--mx', `${((event.clientX - bounds.left) / bounds.width) * 100}%`)
-        panel.style.setProperty('--my', `${((event.clientY - bounds.top) / bounds.height) * 100}%`)
+        if (!bounds.width || !bounds.height) return
+        x = ((event.clientX - bounds.left) / bounds.width) * 100
+        y = ((event.clientY - bounds.top) / bounds.height) * 100
+        if (pending) return
+        pending = requestAnimationFrame(() => {
+          panel.style.setProperty('--mx', `${x}%`)
+          panel.style.setProperty('--my', `${y}%`)
+          pending = 0
+        })
       }
-
       panel.addEventListener('pointermove', handleMove, { passive: true })
-      return [panel, handleMove]
+      return () => {
+        panel.removeEventListener('pointermove', handleMove)
+        if (pending) cancelAnimationFrame(pending)
+      }
     })
 
+    // The thin desktop scroll indicator is painted once per frame at most.
+    let progressFrame = 0
     const onScroll = () => {
-      document.documentElement.style.setProperty(
-        '--scroll-progress',
-        `${Math.min(
-          100,
-          (window.scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)) * 100
-        )}%`
-      )
+      if (progressFrame) return
+      progressFrame = requestAnimationFrame(() => {
+        const remaining = document.documentElement.scrollHeight - innerHeight
+        document.documentElement.style.setProperty('--scroll-progress', `${Math.min(100, scrollY / Math.max(1, remaining) * 100)}%`)
+        progressFrame = 0
+      })
     }
-
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
 
     return () => {
-      moveHandlers.forEach(([element, handleMove]) => element.removeEventListener('pointermove', handleMove))
+      moveHandlers.forEach(dispose => dispose())
       window.removeEventListener('scroll', onScroll)
+      if (progressFrame) cancelAnimationFrame(progressFrame)
     }
   }, [])
 

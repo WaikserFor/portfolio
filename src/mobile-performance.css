@@ -1,0 +1,122 @@
+/* WAIK 19 — mobile fixes and lower-cost effects.
+   Loaded LAST. Desktop design stays unchanged. */
+@media (max-width: 860px), (hover: none) and (pointer: coarse) {
+  /* The scroll hint belongs to desktop only: it overlaps the stacked hero portrait. */
+  .hero > .scroll-mouse,
+  .scroll-mouse {
+    display: none !important;
+  }
+
+  /* The expandable project's linear gradient ended in a straight, visible edge.
+     Keep its desktop effect, remove it completely on touch screens. */
+  .community-entry::before,
+  .community-entry.is-expanded::before {
+    content: none !important;
+    display: none !important;
+  }
+  .community-entry.is-expanded {
+    background: transparent;
+  }
+  .community-entry-details-inner {
+    backface-visibility: hidden;
+  }
+
+  /* Fixed, masked grids and multiple large blur layers are costly while scrolling
+     on Android. Draw the same delicate grid as a static body background. */
+  body {
+    background-image:
+      linear-gradient(rgba(143,158,228,.026) 1px, transparent 1px),
+      linear-gradient(90deg,rgba(143,158,228,.026) 1px, transparent 1px) !important;
+    background-size: 52px 52px !important;
+    background-attachment: scroll !important;
+  }
+  body::before {
+    display: none !important;
+  }
+  body::after {
+    /* The progress line is another fixed layer requiring repaint on scrolling. */
+    display: none !important;
+  }
+
+  .nav-shell {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background: rgba(11,14,28,.97) !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,.18) !important;
+  }
+  .premium-panel,
+  .contact-box {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.035), 0 7px 23px rgba(0,0,0,.1) !important;
+  }
+  .premium-panel::before,
+  .premium-panel::after,
+  .premium-panel:hover::before,
+  .premium-panel:hover::after {
+    display: none !important;
+  }
+
+  /* No permanently running GPU animations on mobile. */
+  .community-visual,
+  .community-orbit,
+  .community-orbit-core,
+  .page-ambient::before,
+  .page-ambient::after { display: none !important; }
+  .portrait-aura {
+    filter: none !important;
+    animation: none !important;
+    opacity: .18 !important;
+    transform: none !important;
+    background: radial-gradient(ellipse, rgba(110,91,213,.48), transparent 68%) !important;
+  }
+  .hero::after { animation: none !important; }
+  .hero h1 span {
+    animation: none !important;
+    background-position: 50% 50% !important;
+    background-size: 100% auto !important;
+  }
+  .hero-copy,
+  .portrait-frame {
+    animation: none !important;
+  }
+  .cursor-halo { display: none !important; }
+
+  /* Keep scroll reveals, but reduce the size and cost of each repaint. */
+  .waik-reveal,
+  .premium-panel.waik-reveal,
+  .portrait-frame.waik-reveal {
+    translate: 0 16px !important;
+    transition-property: opacity, translate !important;
+    transition-duration: .58s, .66s !important;
+    transition-delay: 0ms !important;
+    transition-timing-function: ease-out, cubic-bezier(.2,.75,.3,1) !important;
+    backface-visibility: visible !important;
+  }
+  .waik-reveal.waik-visible,
+  .premium-panel.waik-reveal.waik-visible,
+  .portrait-frame.waik-reveal.waik-visible {
+    translate: 0 0 !important;
+  }
+  .premium-panel,
+  .premium-panel.waik-reveal {
+    scale: 1 !important;
+  }
+}
+
+/* Collapse starts at the same point as the site mobile navigation. */
+@media (max-width: 620px) {
+  .community-stage {
+    background: linear-gradient(148deg, #151928, #0d111d) !important;
+  }
+  .community-stage::after { display:none !important; }
+  .community-entry {
+    background: transparent !important;
+  }
+  .community-entry-description {
+    min-width: 0;
+    padding-right: 0;
+  }
+  .community-entry-details-inner { transform: none !important; }
+  .community-entry.is-expanded .community-entry-details-inner { transform: none !important; }
+}
