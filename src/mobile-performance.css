@@ -120,3 +120,18 @@
   .community-entry-details-inner { transform: none !important; }
   .community-entry.is-expanded .community-entry-details-inner { transform: none !important; }
 }
+
+
+/* WAIK 20: the footer is a permanent layout element, never a reveal target.
+   It must remain visible at the page end even when IntersectionObserver does
+   not run (tab restore, dynamic mobile viewport, low-power mode, old CSS). */
+.footer,
+.footer-inner,
+.footer-inner.waik-reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  translate: 0 0 !important;
+  transform: none !important;
+  filter: none !important;
+}
+.footer { position: relative; z-index: 1; }

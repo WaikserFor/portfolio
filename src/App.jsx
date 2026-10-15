@@ -769,9 +769,9 @@ export default function App() {
   useLayoutEffect(() => {
     // Single reveal observer. Paint a hidden frame BEFORE activating visible
     // items, or the browser may coalesce the state changes and show no motion.
-    document.documentElement.dataset.waikVersion = '19'
+    document.documentElement.dataset.waikVersion = '20'
     const items = [...document.querySelectorAll(
-      '.hero-copy,.portrait-frame,.section-heading,.about-primary,.about-focus,.about-now,.community-stage,.community-entry,.community-footnote,.partner-card,.product-card,.contact-box,.subhead,.footer-inner'
+      '.hero-copy,.portrait-frame,.section-heading,.about-primary,.about-focus,.about-now,.community-stage,.community-entry,.community-footnote,.partner-card,.product-card,.contact-box,.subhead'
     )]
     let observer = null
     let frameOne = null
