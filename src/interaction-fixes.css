@@ -1,0 +1,39 @@
+/* WAIK 6 – consolidated interaction controls */
+:root { --waik-fluid: cubic-bezier(.22,.65,.25,1); }
+html { scroll-behavior: auto !important; scroll-padding-top:118px; }
+@media(max-width:860px){html{scroll-padding-top:90px}}
+
+/* Softer, consistent grid. Do not animate grid lines or opacity on scrolling. */
+body::before {
+  background-image:linear-gradient(rgba(143,158,228,.038) 1px,transparent 1px),linear-gradient(90deg,rgba(143,158,228,.038) 1px,transparent 1px) !important;
+  background-size:60px 60px !important;
+  opacity:.72 !important;
+  -webkit-mask-image:radial-gradient(ellipse 95% 82% at 50% 30%,rgba(0,0,0,.75),rgba(0,0,0,.3) 65%,transparent 100%) !important;
+  mask-image:radial-gradient(ellipse 95% 82% at 50% 30%,rgba(0,0,0,.75),rgba(0,0,0,.3) 65%,transparent 100%) !important;
+}
+/* Links no longer jump or rotate under mouse. Only colors, light and borders change. */
+.btn,.nav-contact,.partner-link,.product-link,.round-arrow,.contact-big-link,.contact-footer a,.footer-right a {
+  transition: background-color .6s var(--waik-fluid), color .45s ease, border-color .6s ease, box-shadow .75s var(--waik-fluid),transform .7s var(--waik-fluid),filter .6s ease !important;
+  will-change:auto;
+}
+.btn:hover,.btn-primary:hover,.btn-quiet:hover,.nav-contact:hover,
+.round-arrow:hover,.contact-big-link:hover {
+  transform:translateY(-2px) !important;
+}
+.partner-link:hover,.product-link:hover,.contact-footer a:hover,.footer-right a:hover {transform:none !important;}
+.btn svg,.partner-link svg,.product-link svg,.contact-footer svg,.round-arrow svg,.contact-big-link svg {
+ transition:transform .7s var(--waik-fluid),opacity .6s ease !important;
+}
+.btn:hover svg,.partner-link:hover svg,.product-link:hover svg,.contact-footer a:hover svg:last-child,
+.round-arrow:hover svg,.contact-big-link:hover svg{transform:translate(2px,-2px) !important;}
+.btn-primary:hover{box-shadow:0 12px 32px rgba(130,104,241,.22) !important;}
+.btn-quiet:hover{background-color:rgba(166,151,237,.075) !important;}
+.nav-contact:hover{background:#ded9fb !important;}
+/* Navigation glass pills keep motion gentle. */
+.nav-links>a{transition:background-color .55s ease,border-color .55s ease,color .4s ease,box-shadow .65s ease !important;transform:none!important}
+.nav-links>a:hover{transform:none!important}
+.nav-links>a::after{display:none!important}
+@media(max-width:620px){body::before{background-size:44px 44px!important}}
+@media(prefers-reduced-motion:reduce){
+ .btn,.nav-contact,.partner-link,.product-link,.round-arrow,.contact-big-link,.nav-links>a{transition-duration:.01ms!important}
+}

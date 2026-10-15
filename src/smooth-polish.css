@@ -1,0 +1,63 @@
+/* WAIK 5: restrained, fluid interactions and original pill navigation */
+:root { --waik-ease: cubic-bezier(.22, 1, .36, 1); }
+html { scroll-padding-top: 116px; }
+@media (max-width:860px) { html { scroll-padding-top: 88px; } }
+/* Glass pill replaces the newer underline; active item tracks current section. */
+.nav-links > a:not(.mobile-nav-contact a) {
+  position:relative;
+  padding:11px 16px;
+  border:1px solid transparent;
+  border-radius:999px;
+  text-shadow:none;
+  transform:none;
+  transition: color .5s ease, background-color .6s var(--waik-ease), border-color .6s ease, box-shadow .6s ease !important;
+}
+.nav-links > a::after { display:none !important; }
+.nav-links > a:hover {
+  color:#fff;
+  background:rgba(157,141,255,.105);
+  border-color:rgba(172,164,243,.13);
+  text-shadow:none;
+  transform:none !important;
+}
+.nav-links > a.active {
+  color:#f8f6ff;
+  background:linear-gradient(135deg,rgba(121,88,238,.43),rgba(63,100,194,.30));
+  border-color:rgba(184,172,255,.32);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 7px 22px rgba(63,50,142,.19);
+}
+/* Lighter easing; no sudden blurring/unblurring of entire sections. */
+.reveal-item {
+  opacity:0;
+  transform:translate3d(0,20px,0);
+  filter:none !important;
+  transition:opacity 1.2s cubic-bezier(.2,.65,.3,1),transform 1.25s var(--waik-ease) !important;
+  transition-delay:var(--reveal-delay,0ms) !important;
+  will-change:opacity,transform;
+}
+.reveal-item.reveal-visible { opacity:1;transform:translate3d(0,0,0); }
+.premium-panel {
+  transition: transform .8s var(--waik-ease),border-color .8s ease,box-shadow .9s var(--waik-ease),background-color .8s ease !important;
+}
+.premium-panel:hover,.reveal-item.reveal-visible.premium-panel:hover { transform:translate3d(0,-4px,0) !important; }
+.premium-panel::after { transition:transform 1.4s var(--waik-ease),opacity .85s ease !important; }
+.portrait-frame { transition:filter 1s var(--waik-ease),transform 1s var(--waik-ease) !important; }
+.portrait-frame:hover { transform:translateY(-5px) !important; }
+.btn,.partner-link,.product-link,.round-arrow,.contact-big-link {transition:transform .65s var(--waik-ease),box-shadow .7s ease,border-color .6s ease,background .7s ease !important;}
+.btn-primary:hover {transform:translateY(-2px) !important;}
+.partner-identity,.product-icon,.project-symbol{transition:transform .75s var(--waik-ease) !important;}
+.partner-card:hover .partner-identity,.product-card:hover .product-icon,.project-card:hover .project-symbol {transform:translateY(-2px) !important;}
+.language-knob {transition:transform .6s var(--waik-ease) !important;}
+@media (max-width:860px) {
+  .nav-links > a {border-radius:12px; padding:15px 12px;}
+  .nav-links > a.active { background:rgba(123,101,221,.17);box-shadow:none; }
+}
+@media (max-width:620px) {
+  .premium-panel:hover,.reveal-item.reveal-visible.premium-panel:hover{transform:none !important;}
+}
+@media (prefers-reduced-motion:reduce){
+ .reveal-item{opacity:1!important;transform:none!important;transition:none!important;will-change:auto}
+ .premium-panel,.btn,.language-knob,.nav-links>a{transition:none!important}
+}
+/* JS owns easing; avoid a second native smooth animation on each frame. */
+html { scroll-behavior:auto !important; }

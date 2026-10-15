@@ -1,0 +1,60 @@
+/* WAIK 7: original animated mouse, a subtle invitation to explore. */
+.scroll-note { display: none !important; }
+.scroll-mouse {
+  position:absolute;
+  bottom:25px;
+  left:50%;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:80px;
+  transform:translateX(-50%);
+  opacity:.82;
+  transition:opacity .65s ease, filter .65s ease;
+}
+.scroll-mouse-track {
+  position:relative;
+  display:block;
+  width:29px;
+  height:54px;
+  border:2px solid rgba(185,183,240,.28);
+  border-radius:24px;
+  background:rgba(18,22,39,.19);
+  box-shadow:0 0 23px rgba(133,116,230,.065),inset 0 1px 0 rgba(255,255,255,.035);
+  transition:border-color .6s ease,box-shadow .65s ease,transform .6s cubic-bezier(.22,1,.36,1);
+}
+.scroll-mouse-wheel {
+  position:absolute;
+  left:50%;
+  top:9px;
+  width:5px;
+  height:9px;
+  border-radius:10px;
+  background:#9886f5;
+  box-shadow:0 0 13px rgba(150,131,246,.3);
+  animation:waik-scroll-wheel 2.4s cubic-bezier(.42,0,.58,1) infinite;
+}
+.scroll-mouse:hover {opacity:1;filter:drop-shadow(0 0 10px rgba(132,117,231,.2));}
+.scroll-mouse:hover .scroll-mouse-track {border-color:rgba(177,163,255,.53);transform:translateY(-2px);box-shadow:0 0 28px rgba(133,116,230,.12);}
+@keyframes waik-scroll-wheel {
+  0%   {transform:translate(-50%,0);opacity:0;}
+  18%  {opacity:1;}
+  72%  {opacity:1;}
+  100% {transform:translate(-50%,19px);opacity:0;}
+}
+/* Neutralize contradictory native scroll behavior: JS handles navigation. */
+html { scroll-behavior:auto !important; }
+.status-chip.live {color:#aff5d2;border-color:rgba(108,214,159,.35);background:rgba(26,91,67,.14)}
+.status-chip.live > span {background:#84ddb0;box-shadow:0 0 13px rgba(108,214,159,.36)}
+@media (max-width:860px) {
+ .scroll-mouse {bottom:10px;}
+}
+@media (max-width:620px) {
+ .scroll-mouse {bottom:6px;transform:translateX(-50%) scale(.86);}
+}
+@media (prefers-reduced-motion:reduce) {
+ /* Small, slow wheel motion remains visible; larger effects stay reduced. */
+ .scroll-mouse-wheel {animation:waik-scroll-wheel 4.4s ease-in-out infinite !important;}
+}

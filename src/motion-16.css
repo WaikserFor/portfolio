@@ -1,0 +1,83 @@
+/* WAIK 16: one motion layer, loaded last. Old CSS cannot steal the
+   independently animated scale or entrance from the new layer. */
+:root {
+  --waik-motion-ease: cubic-bezier(.19, .84, .23, 1);
+  --waik-hover-ease: cubic-bezier(.16, .85, .26, 1);
+}
+
+/* SCROLL ENTRANCE: opacity and translate are independent of hover scaling. */
+.waik-reveal {
+  opacity: 0 !important;
+  translate: 0 54px !important;
+  transition-property: opacity, translate !important;
+  transition-duration: 1.2s, 1.34s !important;
+  transition-timing-function: ease-out, var(--waik-motion-ease) !important;
+  transition-delay: var(--waik-enter-delay, 0ms) !important;
+  backface-visibility: hidden;
+}
+.waik-reveal.waik-visible {
+  opacity: 1 !important;
+  translate: 0 0 !important;
+}
+
+/* HOVER: the independent CSS scale property is never overwritten by the
+   transform rules left over from older design revisions. */
+.premium-panel {
+  scale: 1 !important;
+  transform-origin: 50% 50%;
+  transition-property: scale, transform, border-color, box-shadow !important;
+  transition-duration: .95s, .95s, .74s, .86s !important;
+  transition-timing-function: var(--waik-hover-ease), var(--waik-hover-ease), ease, ease !important;
+  transition-delay: 0ms !important;
+}
+.premium-panel.waik-reveal {
+  transition-property: opacity, translate, scale, transform, border-color, box-shadow !important;
+  transition-duration: 1.2s, 1.34s, .95s, .95s, .74s, .86s !important;
+  transition-timing-function: ease-out, var(--waik-motion-ease), var(--waik-hover-ease), var(--waik-hover-ease), ease, ease !important;
+  transition-delay: var(--waik-enter-delay, 0ms), var(--waik-enter-delay, 0ms), 0ms, 0ms, 0ms, 0ms !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .premium-panel:hover,
+  .premium-panel:focus-within,
+  .premium-panel.waik-reveal:hover,
+  .premium-panel.waik-reveal:focus-within {
+    scale: 1.042 !important;
+    z-index: 3;
+  }
+  .portrait-frame:hover {
+    scale: 1.022 !important;
+  }
+}
+
+/* A little extra motion when hovering the links/buttons, without abrupt jumps. */
+.portrait-frame {
+  scale: 1 !important;
+  transition: scale 1s var(--waik-hover-ease), transform 1s var(--waik-hover-ease), filter 1s ease !important;
+}
+.portrait-frame.waik-reveal {
+  transition-property: opacity, translate, scale, transform, filter !important;
+  transition-duration: 1.2s, 1.34s, 1s, 1s, 1s !important;
+  transition-timing-function: ease-out, var(--waik-motion-ease), var(--waik-hover-ease), var(--waik-hover-ease), ease !important;
+  transition-delay: var(--waik-enter-delay,0ms), var(--waik-enter-delay,0ms), 0ms, 0ms, 0ms !important;
+}
+
+/* Avoid old mobile :hover states from causing a stuck scaled card. */
+@media (hover:none), (pointer:coarse) {
+  .premium-panel:hover, .premium-panel:focus-within, .premium-panel.waik-reveal:hover,
+  .premium-panel.waik-reveal:focus-within { scale: 1 !important; }
+}
+
+/* The user specifically requested the motion effects for this portfolio.
+   These remain subtle if the OS asks to reduce motion; don't disable them
+   completely as earlier stylesheet versions did. No continuous effects added. */
+@media (prefers-reduced-motion: reduce) {
+  .waik-reveal,
+  .waik-reveal.waik-visible {
+    transition-duration: .8s, .85s !important;
+  }
+  .premium-panel,
+  .premium-panel.waik-reveal {
+    transition-duration: .8s, .85s, .85s, .85s, .65s, .65s !important;
+  }
+}

@@ -1,0 +1,159 @@
+/* WAIK 9 — quiet, deliberate detail: no looping logo effects, no extra page clutter. */
+:root {
+  --waik-smooth: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* The wordmark stays still until interaction; only the signature dot responds. */
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  color: #f2f2fa;
+  transition: color .65s ease, filter .7s ease !important;
+}
+.wordmark-dot {
+  display: inline-block;
+  transform-origin: center 80%;
+  transition: transform .7s var(--waik-smooth), color .7s ease,
+              text-shadow .8s ease !important;
+}
+.wordmark:hover,
+.wordmark:focus-visible {
+  color: #fff;
+  filter: drop-shadow(0 0 9px rgba(181, 170, 255, .12));
+}
+.wordmark:hover .wordmark-dot,
+.wordmark:focus-visible .wordmark-dot {
+  transform: translate3d(1px, -3px, 0) rotate(9deg);
+  color: #c9bcff;
+  text-shadow: 0 0 15px rgba(157, 133, 255, .65);
+}
+
+/* A calm edge highlight, not an across-the-card flash. */
+.premium-panel {
+  transition: transform .82s var(--waik-smooth),
+              border-color .8s ease,
+              box-shadow .9s var(--waik-smooth) !important;
+}
+.premium-panel::before {
+  opacity: .43;
+  transition: opacity .95s ease !important;
+}
+.premium-panel:hover::before,
+.premium-panel:focus-within::before {
+  opacity: .8;
+}
+.premium-panel::after {
+  content: '';
+  position: absolute;
+  top: auto;
+  left: 25px;
+  right: 25px;
+  bottom: 0;
+  width: auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(171, 154, 255, .43), transparent);
+  opacity: 0;
+  transform: scaleX(.3);
+  pointer-events: none;
+  transition: opacity .85s ease, transform 1.05s var(--waik-smooth) !important;
+}
+.premium-panel:hover::after,
+.premium-panel:focus-within::after {
+  opacity: .86;
+  transform: scaleX(1);
+}
+.premium-panel:hover,
+.premium-panel:focus-within,
+.reveal-item.reveal-visible.premium-panel:hover {
+  transform: translate3d(0, -3px, 0) !important;
+  border-color: rgba(172, 157, 238, .38) !important;
+  box-shadow: 0 23px 58px rgba(1, 3, 16, .38),
+              0 0 25px rgba(106, 85, 198, .06),
+              inset 0 1px 0 rgba(255, 255, 255, .06) !important;
+}
+
+/* Partners get their own restrained identity, never full-screen neon. */
+.partner-card.bitunix {
+  background:
+    radial-gradient(ellipse 62% 60% at 93% 4%, rgba(157, 196, 66, .095), transparent 76%),
+    linear-gradient(147deg, #1b211e 0%, #121821 61%, #11151e 100%) !important;
+  border-color: rgba(169, 198, 109, .23) !important;
+}
+.partner-card.puprime {
+  background:
+    radial-gradient(ellipse 62% 60% at 93% 4%, rgba(113, 147, 231, .14), transparent 76%),
+    linear-gradient(147deg, #18233a 0%, #101929 61%, #11151e 100%) !important;
+  border-color: rgba(131, 159, 222, .25) !important;
+}
+.partner-card.bitunix:hover,
+.partner-card.bitunix:focus-within {
+  border-color: rgba(170, 204, 111, .41) !important;
+  box-shadow: 0 25px 65px rgba(2, 8, 12, .4),
+              0 0 30px rgba(162, 200, 80, .055) !important;
+}
+.partner-card.puprime:hover,
+.partner-card.puprime:focus-within {
+  border-color: rgba(140, 171, 248, .45) !important;
+  box-shadow: 0 25px 65px rgba(2, 6, 18, .42),
+              0 0 30px rgba(105, 151, 232, .07) !important;
+}
+.partner-card.bitunix::after {
+  background: linear-gradient(90deg, transparent, rgba(188, 224, 104, .43), transparent);
+}
+.partner-card.puprime::after {
+  background: linear-gradient(90deg, transparent, rgba(137, 174, 250, .45), transparent);
+}
+.partner-identity {
+  transition: transform .82s var(--waik-smooth), filter .85s ease !important;
+}
+.partner-card:hover .partner-identity,
+.partner-card:focus-within .partner-identity {
+  transform: translate3d(0, -2px, 0) !important;
+}
+.partner-card.bitunix:hover .partner-identity,
+.partner-card.bitunix:focus-within .partner-identity {
+  filter: drop-shadow(0 0 10px rgba(174, 214, 84, .11));
+}
+.partner-card.puprime:hover .partner-identity,
+.partner-card.puprime:focus-within .partner-identity {
+  filter: drop-shadow(0 0 10px rgba(111, 153, 240, .17));
+}
+
+.partner-card .partner-pill {
+  transition: border-color .7s ease, background-color .7s ease, color .6s ease !important;
+}
+.partner-card.bitunix:hover .partner-pill {
+  border-color: rgba(172, 200, 105, .32);
+  background: rgba(144, 177, 67, .06);
+}
+.partner-card.puprime:hover .partner-pill {
+  border-color: rgba(145, 169, 240, .35);
+  background: rgba(112, 145, 223, .065);
+}
+.partner-card.bitunix .partner-points svg { color: #b2c96d; }
+.partner-card.puprime .partner-points svg { color: #9bb6f0; }
+
+/* Keep project and product icons calm: no tilting or rotating. */
+.project-card:hover .project-symbol,
+.product-card:hover .product-icon {
+  transform: translate3d(0, -2px, 0) !important;
+}
+
+@media (hover: none) {
+  .premium-panel:hover,
+  .reveal-item.reveal-visible.premium-panel:hover {
+    transform: none !important;
+  }
+  .premium-panel:hover::after { opacity: 0; }
+  .wordmark:hover .wordmark-dot { transform: none; text-shadow: none; }
+  .project-card:hover .project-symbol,
+  .product-card:hover .product-icon,
+  .partner-card:hover .partner-identity { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wordmark, .wordmark-dot, .premium-panel, .premium-panel::before,
+  .premium-panel::after, .partner-identity, .partner-pill {
+    transition: none !important;
+  }
+}

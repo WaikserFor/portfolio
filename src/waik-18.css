@@ -1,0 +1,28 @@
+/* WAIK 18 — exactly the two requested hero changes, matching the Figma mockup. */
+.portrait-arch {
+  border-radius: 48px !important;
+}
+
+.hero-copy > .availability {
+  display: inline-flex;
+  margin: 20px 0 0;
+  padding: 9px 14px;
+  font-size: 11px;
+  line-height: 1.25;
+  vertical-align: top;
+}
+
+.hero-copy > .hero-meta {
+  margin-top: 18px;
+}
+
+/* Keep the square-ish framing from the desktop reference on smaller screens too. */
+@media (max-width: 860px) {
+  .portrait-arch { border-radius: 34px !important; }
+  .hero-copy > .availability { margin-top: 19px; }
+  .hero-copy > .hero-meta { margin-top: 17px; }
+}
+
+@media (max-width: 620px) {
+  .portrait-arch { border-radius: 27px !important; }
+}
